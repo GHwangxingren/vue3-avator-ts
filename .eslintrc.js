@@ -1,30 +1,17 @@
 module.exports = {
   root: true,
   env: {
-    node: true
+    node: true,
   },
-  globals: {
-    defineProps: "readonly",
-    defineEmits: "readonly",
-    defineExpose: "readonly",
-    withDefaults: "readonly"
-  },
-  parser: "vue-eslint-parser",
-  // extends: ["plugin:vue/essential", "eslint:recommended"],
+  extends: ["plugin:vue/essential", "eslint:recommended"],
   parserOptions: {
-    parser: "@typescript-eslint/parser",
-    ecmaVersion: 2022,
-    sourceType: "module",
-    ecmaFeatures: {
-      tsx: true
-    }
+    parser: "babel-eslint"
   },
-  extends: [
-    "plugin:@typescript-eslint/recommended",
-    "plugin:vue/vue3-recommended"
-  ],
+  // rules: {
+  //   'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+  //   'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off'
+  // }
   rules: {
-    "@typescript-eslint/no-explicit-any": "off",
     "no-array-constructor": 2, //禁止使用数组构造器
     "no-bitwise": 1, //禁止使用按位运算符
     "no-caller": 1, //禁止使用arguments.caller或arguments.callee
@@ -53,7 +40,7 @@ module.exports = {
     "no-floating-decimal": 2, //禁止省略浮点数中的0 .5 3.
     "no-func-assign": 2, //禁止重复的函数声明
     "no-implied-eval": 2, //禁止使用隐式eval
-    // "no-inline-comments": 1, //禁止行内备注   --需要确认
+    "no-inline-comments": 1, //禁止行内备注   --需要确认
     "no-inner-declarations": [2, "functions"], //禁止在块语句中使用声明（变量或函数）
     "no-invalid-regexp": 2, //禁止无效的正则表达式
     "no-irregular-whitespace": 2, //不能有不规则的空格
@@ -98,7 +85,7 @@ module.exports = {
     "no-var": 1, //禁用var，用let和const代替
     "no-warning-comments": [
       0,
-      { terms: ["todo", "fixme", "xxx"], location: "start" }
+      { terms: ["todo", "fixme", "xxx"], location: "start" },
     ], //不能有警告备注
     "no-with": 2, //禁用with
 
@@ -112,7 +99,7 @@ module.exports = {
     "default-case": 2, //switch语句最后必须有default
     eqeqeq: 2, //必须使用全等
     // "indent": [2, 4], //缩进风格
-    "new-cap": 2, //函数名首行大写必须使用new方式调用，首行小写必须用不带new方式调用
+    // "new-cap": 2, //函数名首行大写必须使用new方式调用，首行小写必须用不带new方式调用
     "new-parens": 2, //new时必须加小括号
     "one-var": 1, //连续声明
     "operator-linebreak": [2, "after"], //换行时运算符在行尾还是行首
@@ -122,6 +109,6 @@ module.exports = {
     "use-isnan": 2, //禁止比较时使用NaN，只能用isNaN()
     "valid-typeof": 2, //必须使用合法的typeof的值
     "vars-on-top": 2, //var必须放在作用域顶部
-    "wrap-iife": [2, "inside"] //立即执行函数表达式的小括号风格
-  }
+    "wrap-iife": [2, "inside"], //立即执行函数表达式的小括号风格
+  },
 };
