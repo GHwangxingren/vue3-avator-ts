@@ -2,11 +2,10 @@
  # @Author: wangxingren
  # @Date: 2022-02-16 17:19:16
  # @LastEditors: wangxingren
- # @LastEditTime: 2022-02-16 17:27:18
+ # @LastEditTime: 2022-02-16 17:35:20
  # @Descripttion: 
  # @FilePath: /vue3-avator-ts/.husky/pre-commit
 ### 
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
-echo "111";
 yarn lint-staged
