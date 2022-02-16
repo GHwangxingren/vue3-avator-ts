@@ -8,11 +8,11 @@
     "prepare": "husky install",
     "auto:git": "node shell"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
+  // "husky": {
+  //   "hooks": {
+  //     "pre-commit": "lint-staged"
+  //   }
+  // },
   "lint-staged": {
     "*.{js,vue}": "eslint --cache --fix"
   },
