@@ -2,7 +2,7 @@
  * @Author: wangxingren
  * @Date: 2022-02-07 17:32:53
  * @LastEditors: wangxingren
- * @LastEditTime: 2022-02-16 16:31:25
+ * @LastEditTime: 2022-02-16 18:37:05
  * @Descripttion: app
  * @FilePath: /vue3-avator-ts/src/App.vue
 -->
