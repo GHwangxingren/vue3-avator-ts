@@ -10,7 +10,6 @@ module.exports = {
     withDefaults: "readonly"
   },
   parser: "vue-eslint-parser",
-  // extends: ["plugin:vue/essential", "eslint:recommended"],
   parserOptions: {
     parser: "@typescript-eslint/parser",
     ecmaVersion: 2022,
@@ -19,12 +18,18 @@ module.exports = {
       tsx: true
     }
   },
+  // plugins: [
+  //   "@typescript-eslint'"
+  // ],
   extends: [
     "plugin:@typescript-eslint/recommended",
     "plugin:vue/vue3-recommended"
   ],
   rules: {
     "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-inferrable-types": [0, "ignore-params", "ignore-properties"],
+    "@typescript-eslint/no-unused-vars": 0,
+    "@typescript-eslint/no-namespace": "off",
     "no-array-constructor": 2, //禁止使用数组构造器
     "no-bitwise": 1, //禁止使用按位运算符
     "no-caller": 1, //禁止使用arguments.caller或arguments.callee
@@ -47,7 +52,7 @@ module.exports = {
     "no-extend-native": 2, //禁止扩展native对象
     "no-extra-bind": 2, //禁止不必要的函数绑定
     "no-extra-boolean-cast": 2, //禁止不必要的bool转换
-    "no-extra-parens": 2, //禁止非必要的括号
+    // "no-extra-parens": 2, //禁止非必要的括号
     "no-extra-semi": 2, //禁止多余的冒号
     "no-fallthrough": 1, //禁止switch穿透
     "no-floating-decimal": 2, //禁止省略浮点数中的0 .5 3.
@@ -72,13 +77,13 @@ module.exports = {
     "no-obj-calls": 2, //不能调用内置的全局对象，比如Math() JSON()
     "no-octal": 2, //禁止使用八进制数字
     "no-octal-escape": 2, //禁止使用八进制转义序列
-    "no-param-reassign": 2, //禁止给参数重新赋值
+    // "no-param-reassign": 2, //禁止给参数重新赋值
     "no-proto": 2, //禁止使用__proto__属性
     "no-redeclare": 2, //禁止重复声明变量
     "no-regex-spaces": 2, //禁止在正则表达式字面量中使用多个空格 /foo bar/
     "no-return-assign": 1, //return 语句中不能有赋值表达式
     "no-self-compare": 2, //不能比较自身
-    "no-shadow": 2, //外部作用域中的变量不能与它所包含的作用域中的变量或参数同名
+    // "no-shadow": 2, //外部作用域中的变量不能与它所包含的作用域中的变量或参数同名
     "no-shadow-restricted-names": 2, //严格模式中规定的限制标识符不能作为声明时的变量名使用
     "no-spaced-func": 2, //函数调用时 函数名与()之间不能有空格
     "no-sparse-arrays": 2, //禁止稀疏数组， [1,,2]
@@ -86,12 +91,12 @@ module.exports = {
     "no-throw-literal": 2, //禁止抛出字面量错误 throw "error";
     "no-undef": 1, //不能有未定义的变量
     "no-undef-init": 2, //变量初始化时不能直接给它赋值为undefined
-    "no-undefined": 2, //不能使用undefined
+    // "no-undefined": 2, //不能使用undefined
     "no-unexpected-multiline": 2, //避免多行表达式
     "no-unneeded-ternary": 2, //禁止不必要的嵌套 var isYes = answer === 1 ? true : false;
     "no-unreachable": 2, //不能有无法执行的代码
     "no-unused-expressions": 2, //禁止无用的表达式
-    "no-unused-vars": [2, { vars: "all", args: "after-used" }], //不能有声明后未被使用的变量或参数
+    // "no-unused-vars": [2, { vars: "all", args: "after-used" }], //不能有声明后未被使用的变量或参数
     "no-use-before-define": 2, //未定义前不能使用
     "no-useless-call": 2, //禁止不必要的call和apply
     "no-void": 2, //禁用void操作符
@@ -114,7 +119,7 @@ module.exports = {
     // "indent": [2, 4], //缩进风格
     "new-cap": 2, //函数名首行大写必须使用new方式调用，首行小写必须用不带new方式调用
     "new-parens": 2, //new时必须加小括号
-    "one-var": 1, //连续声明
+    // "one-var": 1, //连续声明
     "operator-linebreak": [2, "after"], //换行时运算符在行尾还是行首
     quotes: [2, "double"], //引号类型 `` "" ''
     radix: 2, //parseInt必须指定第二个参数
@@ -122,6 +127,9 @@ module.exports = {
     "use-isnan": 2, //禁止比较时使用NaN，只能用isNaN()
     "valid-typeof": 2, //必须使用合法的typeof的值
     "vars-on-top": 2, //var必须放在作用域顶部
-    "wrap-iife": [2, "inside"] //立即执行函数表达式的小括号风格
+    "wrap-iife": [2, "inside"], //立即执行函数表达式的小括号风格
+    "vue/multi-word-component-names": [0, {
+      "ignores": []
+    }]
   }
 };
