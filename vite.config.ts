@@ -2,7 +2,7 @@
  * @Author: wangxingren
  * @Date: 2022-02-07 17:32:53
  * @LastEditors: wangxingren
- * @LastEditTime: 2022-02-17 17:11:11
+ * @LastEditTime: 2022-03-30 10:46:18
  * @Descripttion:
  * @FilePath: /vue3-avator-ts/vite.config.ts
  */
@@ -15,6 +15,7 @@ import { visualizer } from "rollup-plugin-visualizer";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  base: "./",
   plugins: [
     vue(),
     eslintPlugin({
@@ -36,9 +37,10 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src")
     }
   },
+  build: {
+    outDir: "dist"
+  },
   server: {
-    base: "./",
-    outDir: "dist",
     port: 9000,
     open: true,
     proxy: {
@@ -48,5 +50,11 @@ export default defineConfig(({ mode }) => ({
         rewrite: path => path.replace(/^\/api/, "")
       }
     }
+  },
+  // 在开发时会被定义为全局变量，而在构建时则是静态替换
+  define: {
+    __VUE_I18N_FULL_INSTALL__: false,
+    __VUE_I18N_LEGACY_API__: false,
+    __INTLIFY_PROD_DEVTOOLS__: false
   }
 }));
