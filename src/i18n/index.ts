@@ -2,7 +2,7 @@
  * @Author: wangxingren
  * @Date: 2022-02-17 15:21:38
  * @LastEditors: wangxingren
- * @LastEditTime: 2022-02-17 16:58:59
+ * @LastEditTime: 2022-03-30 11:18:48
  * @Descripttion: 多语言入口
  * @FilePath: /vue3-avator-ts/src/i18n/index.ts
  */

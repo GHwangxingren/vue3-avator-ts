@@ -2,13 +2,12 @@
  * @Author: wangxingren
  * @Date: 2022-02-07 17:32:53
  * @LastEditors: wangxingren
- * @LastEditTime: 2022-03-30 10:46:18
+ * @LastEditTime: 2022-03-30 11:18:54
  * @Descripttion:
  * @FilePath: /vue3-avator-ts/vite.config.ts
  */
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
-// import path = require("path");
 import path from "path";
 import eslintPlugin from "vite-plugin-eslint";
 import { visualizer } from "rollup-plugin-visualizer";
@@ -34,7 +33,7 @@ export default defineConfig(({ mode }) => ({
   ],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src")
+      "@": path.resolve(__dirname, "src")
     }
   },
   build: {
