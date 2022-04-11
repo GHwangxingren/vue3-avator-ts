@@ -130,6 +130,18 @@ module.exports = {
     "wrap-iife": [2, "inside"], //立即执行函数表达式的小括号风格
     "vue/multi-word-component-names": [0, {
       "ignores": []
-    }]
+    }],
+    "vue/max-attributes-per-line": ["error", {
+      "singleline": {
+        "max": 5
+      },
+      "multiline": {
+        "max": 5
+      }
+    }],
+    "vue/html-self-closing": 0,
+    "vue/no-v-html": 0,
+    "vue/no-unused-vars": 1,
+    "vue/singleline-html-element-content-newline": 0
   }
 };

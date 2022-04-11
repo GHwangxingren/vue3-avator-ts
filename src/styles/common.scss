@@ -1,0 +1,85 @@
+// =============flxe布局================
+.flex {
+  display: flex;
+
+  &-rpw {
+    flex-direction: row;
+  }
+  
+  &-column {
+    flex-direction: column;
+  }
+
+  &-shrink-0 {
+    flex-shrink: 0;
+  }
+
+  &-center {
+    align-items: center;
+    justify-content: center;
+  }
+
+  &-1 {
+    flex: 1;
+  }
+
+  &-wrap {
+    flex-wrap: wrap;
+  }
+}
+
+// 主轴上面的元素排序方式
+$flex-justify: (
+  start: flex-start,
+  end: flex-end,
+  center:  center,
+  between: space-between,
+  around: space-around
+);
+@each $key, $value in $flex-justify {
+  .flex-justify-#{$key} {
+    justify-content: $value
+  }
+}
+
+// 侧轴上面元素的排序方式
+$flex-align: (
+  start: flex-start,
+  end: flex-end,
+  center: center,
+  stretch: stretch
+);
+
+@each $key, $value in $flex-align {
+  .flex-align-#{$key} {
+    align-items: $value
+  }
+}
+
+// ==========布局============
+.text {
+  &-center {
+    text-align: center;
+  }
+  &-right {
+    text-align: right;
+  }
+}
+
+.border-radius {
+  border-radius: 50%;
+}
+
+// 定位
+@each $val in (relative, absolute) {
+  .position-#{str-slice($val, 0, 1)} {
+      position: $val;
+  }
+}
+
+.text-overflow {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: break-all;
+}
