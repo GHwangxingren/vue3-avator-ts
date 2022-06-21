@@ -13,13 +13,13 @@
     "husky": "^7.0.4",
     "lint-staged": "^12.3.4",
     "nprogress": "^0.2.0",
+    "pinia": "^2.0.14",
     "readline-sync": "^1.4.10",
     "shelljs": "^0.8.5",
     "vue": "^3.2.25",
     "vue-i18n": "^9.1.9",
     "vue-router": "4",
     "vue3-perfect-scrollbar": "^1.6.0",
-    "vuex": "^4.0.2",
     "vuex-persistedstate": "^4.1.0"
   },
   "lint-staged": {

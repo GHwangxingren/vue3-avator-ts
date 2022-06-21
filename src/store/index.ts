@@ -1,13 +1,15 @@
 /*
  * @Author: wangxingren
  * @Date: 2022-04-07 21:05:57
- * @LastEditors: wangxingren
- * @LastEditTime: 2022-04-07 23:31:11
- * @Descripttion: store入口
+ * @LastEditors: web.wangxingren
+ * @LastEditTime: 2022-06-21 17:21:38
+ * @Descripttion:
  * @FilePath: /vue3-avator-ts/src/store/index.ts
  */
-import { InjectionKey } from "vue";
-import { Store, createStore, createLogger, useStore as baseUseStore } from "vuex";
-import createPersistedState from "vuex-persistedstate";
+import { createPinia } from "pinia";
+import { useSiderStore } from "./modules/sider";
 
-// export const key:InjectionKey
+const pinia = createPinia();
+
+export { useSiderStore };
+export default pinia;
