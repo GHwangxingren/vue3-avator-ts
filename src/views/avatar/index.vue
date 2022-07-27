@@ -2,16 +2,29 @@
  * @Author: wangxingren
  * @Date: 2022-03-30 17:36:15
  * @LastEditors: web.wangxingren
- * @LastEditTime: 2022-06-21 16:35:17
+ * @LastEditTime: 2022-06-28 14:20:01
  * @Descripttion: 主页
  * @FilePath: /vue3-avator-ts/src/views/avatar/index.vue
 -->
 <template>
   <div class="avatar-page">
     <Container>
-      <Header />
+      <div class="content-warpper">
+        <div class="content-view">
+          <!-- 头部 -->
+          <Header />
+          <!-- 中央头像区域 -->
+          <div class="palyground">
+            <div class="avatar-wrapper">
+              <AvatarMain :option="avatarOpts" :size="280" />
+            </div>
+          </div>
+        </div>
+      </div>
     </Container>
-    <Sider />
+    <Sider>
+      <ConfigPanel />
+    </Sider>
   </div>
 </template>
 
@@ -19,6 +32,10 @@
 import Header from "@/layouts/Header.vue";
 import Container from "@/layouts/Container.vue";
 import Sider from "@/layouts/Sider.vue";
+import AvatarMain from "@/components/AvatarMain.vue";
+import ConfigPanel from "@/components/ConfigPanel.vue";
+import { useAvatarOption } from "@/hooks";
+const { avatarOpts } = useAvatarOption();
 </script>
 
 
@@ -30,5 +47,35 @@ import Sider from "@/layouts/Sider.vue";
   overflow: hidden;
   color: var.$color-text;
   background-color: var.$color-page-bg;
+  .content-warpper {
+    height: 100%;
+    transform: scale(1);
+
+    .content-view {
+      position: relative;
+      z-index: 110;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      overflow-y: auto;
+    }
+  }
+  .palyground {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .avatar-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      @media screen and (max-width: var.$screen-sm) {
+        transform: scale(0.85);
+      }
+    }
+  }
 }
 </style>

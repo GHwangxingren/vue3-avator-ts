@@ -15,6 +15,9 @@
     "paths": {
       "@/*": ["src/*"]
     },
+    "types": [
+      "pinia-plugin-persist"
+    ]
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/store/modules/test"]
 }
