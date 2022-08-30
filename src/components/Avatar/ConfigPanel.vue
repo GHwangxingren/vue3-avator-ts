@@ -3,8 +3,8 @@
  * @Author: web.wangxingren
  * @Date: 2022-06-22 15:50:23
  * @LastEditors: web.wangxingren
- * @LastEditTime: 2022-07-26 15:58:15
- * @FilePath: /vue3-avator-ts/src/components/ConfigPanel.vue
+ * @LastEditTime: 2022-07-27 16:02:15
+ * @FilePath: /vue3-avator-ts/src/components/avatar/ConfigPanel.vue
 -->
 <template>
   <PerfectScrollbar class="configurator-scroll">
@@ -36,6 +36,14 @@
         >
         </li>
       </ul>
+      <details v-if="item.widgetType === WidgetType.Tops || item.widgetType === WidgetType.Clothes" class="color-picker">
+        <summary class="color-label">{{ t("label.colors") }}</summary>
+        <ul class="color-list">
+          <li v-for="color in SETTINGS.commonColors" :key="color" @click="setWidgetColor(item.widgetType, color)">
+            <div class="bg-color" :style="{ background: color }"></div>
+          </li>
+        </ul>
+      </details>
     </SectionWrapper>
   </PerfectScrollbar>
 </template>
@@ -74,7 +82,6 @@ onMounted(async () => {
       widgetList: _section[i]
     };
   });
-  console.log(section.value);
 });
 
 async function getWidgets(widgetType: WidgetType) {
@@ -113,8 +120,7 @@ const switchBgColor = (bgColor: string) => {
 
 // 切换其它小工具
 const switchWidget = (widgetType: WidgetType, widgetShape: WidgetShape) => {
-  // if (widgetShape && avatarOpts.value.widgets?.[widgetType]) {
-  if (widgetShape) {
+  if (widgetShape && avatarOpts.value.widgets?.[widgetType]) {
     setAvatarOpts({
       ...avatarOpts.value,
       widgets: {
@@ -130,6 +136,23 @@ const switchWidget = (widgetType: WidgetType, widgetShape: WidgetShape) => {
     });
   }
 };
+
+// 切换颜色
+const setWidgetColor = (widgetType: WidgetType, fillColor: string) => {
+  if (avatarOpts.value.widgets?.[widgetType]) {
+    setAvatarOpts({
+      ...avatarOpts.value,
+      widgets: {
+        ...avatarOpts.value.widgets,
+        [widgetType]: {
+          ...avatarOpts.value.widgets?.[widgetType],
+          fillColor
+        }
+      }
+    });
+  }
+};
+
 </script>
 
 <style lang="scss" scoped>
@@ -262,6 +285,32 @@ const switchWidget = (widgetType: WidgetType, widgetShape: WidgetShape) => {
 
       &:hover {
         background-color: lighten(var.$color-configurator, 0);
+      }
+    }
+  }
+  .color-picker {
+    margin-top: 1rem;
+    .color-label {
+      color: #677f98;
+      font-size: small;
+      cursor: pointer;
+      user-select: none;
+    }
+    .color-list {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      li {
+        width: calc(100% / 7);
+        padding: 0.6rem 0;
+        cursor: pointer;
+        .bg-color {
+          width: 1.3em;
+          height: 1.3em;
+          border-radius: 50%;
+          margin: 0 auto;
+          box-shadow: 0 0 0.05em 0.2em var.$color-configurator;
+        }
       }
     }
   }

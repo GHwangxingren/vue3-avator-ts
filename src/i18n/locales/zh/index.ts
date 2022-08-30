@@ -1,8 +1,8 @@
 /*
  * @Author: wangxingren
  * @Date: 2022-02-17 15:28:16
- * @LastEditors: wangxingren
- * @LastEditTime: 2022-02-17 16:42:19
+ * @LastEditors: web.wangxingren
+ * @LastEditTime: 2022-08-30 17:04:14
  * @Descripttion: 多语言-中文枚举
  * @FilePath: /vue3-avator-ts/src/i18n/locales/zh/index.ts
  */
@@ -16,6 +16,7 @@ export default {
     code: "配置代码",
     randomize: "随机生成",
     download: "下载头像",
+    downloadMultiple: "批量下载",
     copyCode: "复制代码",
     copied: "已复制",
     downloading: "准备下载",
@@ -23,7 +24,8 @@ export default {
   },
   label: {
     wrapperShape: "头像形状",
-    backgroundColor: "背景颜色"
+    backgroundColor: "背景颜色",
+    colors: "颜色"
   },
   WidgetType: {
     [WidgetType.Face]: "脸蛋",
@@ -45,6 +47,10 @@ export default {
   },
   text: {
     codeModalTitle: "配置代码",
-    downloadTip: "长按图片或右键点击下载至本地相册"
+    downloadTip: "长按图片或右键点击下载至本地相册",
+    downloadMultiple: "开始下载",
+    downloadingMultiple: "正在下载",
+    downloadMultipleTip: "已为你自动生成头像",
+    regenerate: "换一批"
   }
 };

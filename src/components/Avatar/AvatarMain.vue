@@ -3,16 +3,22 @@
  * @Author: 王兴仁
  * @Date: 2022-06-22 10:46:30
  * @LastEditors: web.wangxingren
- * @LastEditTime: 2022-07-26 18:24:29
- * @FilePath: /vue3-avator-ts/src/components/AvatarMain.vue
+ * @LastEditTime: 2022-08-30 16:12:21
+ * @FilePath: /vue3-avator-ts/src/components/Avatar/AvatarMain.vue
 -->
 <template>
-  <div ref="avatar-ref" class="avatar-main" :class="avatarOpts.wrapperShape" :style="{ width: `${avatarSize}px`, height: `${avatarSize}px` }">
+  <div ref="avatarRef" class="avatar-main" :class="avatarOpts.wrapperShape" :style="{ width: `${avatarSize}px`, height: `${avatarSize}px` }">
     <Backgrpund :color="avatarOpts.background.color" />
     {{ avatarOpts.wrapperShape }}
     <div class="avatar-content" v-html="svgContent"></div>
   </div>
 </template>
+
+<script lang="ts">
+export interface VueColorAvatarRef {
+  avatarRef: HTMLDivElement
+}
+</script>
 
 <script lang="ts" setup>
 import { ref, toRefs, watchEffect } from "vue";
@@ -22,6 +28,10 @@ import { AVATAR_LAYER, NONE } from "@/utils/constant";
 import { WidgetType } from "@/enums";
 import { getRandomAvatarOption } from "@/utils";
 import { widgetData } from "@/utils/dynamic-data";
+
+const avatarRef = ref<VueColorAvatarRef["avatarRef"]>();
+// 暴露此属性，否组父组件无法获取
+defineExpose({ avatarRef });
 
 interface Props {
   option: AvatarOption,
@@ -54,12 +64,10 @@ watchEffect(async () => {
   const svgRawList = await Promise.all(promises).then((raw) => {
     return raw.map((svgRaw, i) => {
       const widgetFillColor = sortedList[i][1].fillColor;
-
       const content = svgRaw
         .slice(svgRaw.indexOf(">", svgRaw.indexOf("<svg")) + 1)
         .replace("</svg>", "")
         .replaceAll("$fillColor", widgetFillColor || "transparent");
-
       return `
         <g id="vue-color-avatar-${sortedList[i][0]}">
           ${content}

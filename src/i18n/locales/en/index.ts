@@ -1,8 +1,8 @@
 /*
  * @Author: wangxingren
  * @Date: 2022-02-17 15:28:37
- * @LastEditors: wangxingren
- * @LastEditTime: 2022-02-17 16:42:39
+ * @LastEditors: web.wangxingren
+ * @LastEditTime: 2022-08-30 17:04:25
  * @Descripttion: 多语言-英文枚举
  * @FilePath: /vue3-avator-ts/src/i18n/locales/en/index.ts
  */
@@ -16,6 +16,7 @@ export default {
     code: "code",
     randomize: "Randomize",
     download: "Download",
+    downloadMultiple: "Download multiple",
     copyCode: "Copy",
     copied: "Copied",
     downloading: "Downloading",
@@ -23,9 +24,10 @@ export default {
   },
   label: {
     wrapperShape: "Avatar Shape",
-    backgroundColor: "Background Color"
+    backgroundColor: "Background Color",
+    colors: "colors"
   },
-  widgetType: {
+  WidgetType: {
     [WidgetType.Face]: "Face",
     [WidgetType.Tops]: "Tops",
     [WidgetType.Ear]: "Ear",
@@ -45,6 +47,10 @@ export default {
   },
   text: {
     codeModalTitle: "Code",
-    downloadTip: "LONG PRESS or RIGHT CLICK to save"
+    downloadTip: "LONG PRESS or RIGHT CLICK to save",
+    downloadMultiple: "Download",
+    downloadingMultiple: "Downloading",
+    downloadMultipleTip: "Automatically generated",
+    regenerate: "Regenerate"
   }
 };

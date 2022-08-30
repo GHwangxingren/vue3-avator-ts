@@ -10,6 +10,7 @@
     "auto:git": "node shell"
   },
   "dependencies": {
+    "html2canvas": "^1.4.1",
     "husky": "^7.0.4",
     "lint-staged": "^12.3.4",
     "mitt": "^3.0.0",

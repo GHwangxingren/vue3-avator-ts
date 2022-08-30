@@ -3,11 +3,11 @@
  * @Author: web.wangxingren
  * @Date: 2022-06-27 18:38:58
  * @LastEditors: web.wangxingren
- * @LastEditTime: 2022-07-26 15:59:14
+ * @LastEditTime: 2022-08-30 14:51:53
  * @FilePath: /vue3-avator-ts/src/utils/index.ts
  */
 import { AvatarOption, None } from "@/types";
-import { SETTINGS, NONE, AVATAR_LAYER } from "./constant";
+import { SETTINGS, NONE, AVATAR_LAYER, SPECIAL_AVATARS } from "./constant";
 import { TopsShape, Gender, BeardShape, WrapperShape, FaceShape, EarShape, EarringsShape, EyebrowsShape, GlassesShape, EyesShape, NoseShape, MouthShape, ClothesShape } from "@/enums";
 
 /**
@@ -34,7 +34,7 @@ function getRandomValue<T>(arr: T[], { avoid = [], usually = [] }: {
  * @description 从一个数组获取随机数
  */
 function getRandomFillColor() {
-  return SETTINGS.commonColors[Math.random() * SETTINGS.commonColors.length];
+  return SETTINGS.commonColors[Math.floor(Math.random() * SETTINGS.commonColors.length)];
 }
 
 /**
@@ -110,4 +110,11 @@ export function getRandomAvatarOption(presentOpts: Partial<AvatarOption> = {}, u
     widgets
   };
   return avatarOption;
+}
+
+/**
+ * @description 从特定的组合列表中获取随机一个
+ */
+export function getSpecialAvatarOption(): AvatarOption {
+  return SPECIAL_AVATARS[Math.floor(Math.random() * SPECIAL_AVATARS.length)];
 }

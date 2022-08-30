@@ -1,0 +1,193 @@
+<!--
+ * @Description: 
+ * @Author: web.wangxingren
+ * @Date: 2022-08-01 17:20:50
+ * @LastEditors: web.wangxingren
+ * @LastEditTime: 2022-08-02 11:23:45
+ * @FilePath: /vue3-avator-ts/star.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BiuBiuBiu~</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    #star-wrapper {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+      background: radial-gradient(at 107% 30%, #3d4650 75px, #4a3d50 -4%, #000 70%);
+    }
+    .heart {
+      position: absolute;
+      z-index: 3;
+      left: 50%;
+      top: 50%;
+      width: 200px;
+      height: 200px;
+      opacity: 0;
+      transform: translate(-50%, -50%) rotate(-45deg);
+      border-left: 3px dotted pink;
+      border-bottom: 3px dotted pink;
+      /* animation: myScale 4s linear 6s forwards; */
+    }
+    .heart::before {
+      content: "";
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border-right: 3px dotted pink;
+      transform: translateX(100px);
+    }
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border-top: 3px dotted pink;
+      transform: translateY(-100px);
+    }
+    .meteor {
+      position: absolute;
+      z-index: 2;
+      background: linear-gradient(to right, rgb(255, 255, 255), rgba(0, 0, 0, .1));
+      height: 2px;
+      width: 100px;
+      box-shadow: 0 0 -3px rgb(37, 179, 249);
+      border-radius: 30px;
+      right: 0;
+      top: 0;
+      animation: myMeteor 1s linear infinite;
+    }
+    .star {
+      position: absolute;
+      z-index: 1;
+      width: 10px;
+      height: 10px;
+      margin: 100px auto;
+      border-radius: 50%;
+      background: radial-gradient(at 70% 30%, rgb(246, 243, 243) 1px, #fbfdff);
+      box-shadow: 0 0 6px 1px rgb(37, 179, 249);
+      animation: myStar 5s linear forwards;
+    }
+    @keyframes myStar {
+      0% {
+        opacity: .5;
+      }
+      25% {
+        transform: translateX(-50%);
+      }
+      50% {
+        opacity: .8;
+        transform: translateY(50%);
+      }
+      75% {
+        transform: translateX(30%);
+      }
+      90% {
+        opacity: .9;
+      }
+      100% {
+        opacity: .9;
+        transform: translateY(-20%);
+      }
+    }
+    @keyframes myMeteor {
+      0% {
+        transform: translate(-320%, 12000%) rotate(-30deg);
+      }
+      25% {
+        transform: translate(-535%, 17000%) rotate(-30deg);
+      }
+      100% {
+        transform: translate(-795%, 24500%) rotate(-30deg);
+      }
+    }
+    @keyframes myScale {
+      0% {
+        opacity: .5;
+        transform: translate(-50%, -50%) rotate(-45deg) scale(1);
+      }
+      25% {
+        opacity: 1;
+        transform: translate(-50%, -50%) rotate(-45deg) scale(1.5);
+      }
+      50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) rotate(-45deg) scale(1);
+      }
+      75% {
+        opacity: 1;
+        transform: translate(-50%, -50%) rotate(-45deg) scale(1.5);
+      }
+      100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) rotate(-45deg) scale(1);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="star-wrapper">
+    <div class="heart"></div>
+  </div>
+
+  <script>
+    const wrapper = document.getElementsByClassName("star-wrapper");
+    const body = document.body;
+    const starCreate = () => {
+      const allStar = document.getElementsByClassName("star");
+      if (allStar && allStar.length && allStar.length > 50) {
+        return;
+      }
+      let star = "";
+      for (let i = 0; i < 10; i++) {
+        const r = Math.random() * 1 + 3; // 2-5
+
+        star = document.createElement("div");
+        star.classList.add("star");
+        star.style.width = r + "px";
+        star.style.height = r + "px";
+        star.style.left = Math.random() * innerWidth + "px";
+        star.style.top = Math.random() * innerHeight + "px";
+        body.append(star);
+      }
+
+      setTimeout(() => {
+        star.remove();
+      }, 400);
+    };
+
+    setInterval(() => {
+      starCreate();
+    }, 900);
+
+    const meteorCreate = () => {
+      const meteor = document.createElement("div");
+      meteor.classList.add("meteor");
+      const size = Math.random() * 10 + 100;
+      meteor.style.width = `${size}px`;
+      meteor.style.right = Math.random() * innerWidth + "px";
+      meteor.style.top = Math.random() * innerHeight + "px";
+      body.append(meteor);
+      setTimeout(() => {
+        meteor.remove();
+      }, 400);
+    };
+
+    setInterval(() => {
+      meteorCreate();
+    }, 1000);
+  </script>
+</body>
+</html>
