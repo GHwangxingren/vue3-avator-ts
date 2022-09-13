@@ -3,24 +3,34 @@
  * @Author: web.wangxingren
  * @Date: 2022-08-29 17:36:08
  * @LastEditors: web.wangxingren
- * @LastEditTime: 2022-08-30 17:57:19
+ * @LastEditTime: 2022-09-13 10:13:58
  * @FilePath: /vue3-avator-ts/src/components/Avatar/ActionOperate.vue
 -->
 <template>
   <div class="action-operate">
     <button type="button" class="action-btn" @click="handleRandom">{{ t('action.randomize') }}</button>
     <button type="button" class="action-btn" @click="handleDownload">{{ t('action.download') }}</button>
-    <button type="button" class="action-btn" @click="handleBatchDownload">{{ t('action.downloadMultiple') }}</button>
+    <!-- 或者 () => { handleBatchDownload() } -->
+    <button type="button" class="action-btn" @click="handleBatchDownload();">{{ t('action.downloadMultiple') }}</button>
+    <!-- 批量下载对话框 由于父元素层级问题，无法覆盖到aside的上边 -->
+    <BatchDownloadModal
+      :visible="batchDownloaVisible"
+      :avatar-list="avatarList"
+      @regenerate="handleBatchDownload"
+      @close=";(batchDownloaVisible = false), (imageDataURL = '')"
+    />
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref, toRefs } from "vue";
+import BatchDownloadModal from "@/components/Avatar/BatchDownloadModal.vue";
+import { ref, watchEffect } from "vue";
 import { useI18n } from "vue-i18n";
 import { getSpecialAvatarOption, getRandomAvatarOption } from "@/utils";
 import { TRIGGER_PROBABILITY, NOT_COMPATIBLE_AGENTS, DOWNLOAD_DELAY } from "@/utils/constant";
 import { useAvatarOption } from "@/hooks";
 import { name as appName } from "../../../package.json";
+import type { AvatarOption } from "@/types";
 
 const { t } = useI18n();
 const { avatarOpts, setAvatarOpts } = useAvatarOption();
@@ -44,6 +54,7 @@ const handleRandom = () => {
 // 单个下载
 const downloading = ref(false);
 const imageDataURL = ref("");
+const downloadModalVisible = ref(false);
 const handleDownload = async () => {
   try {
     const userAgent = window.navigator.userAgent.toLowerCase();
@@ -75,9 +86,32 @@ const handleDownload = async () => {
 };
 
 // 批量下载
-const downloadModalVisible = ref(false);
-const handleBatchDownload = () => {
-  console.log(3);
+const avatarList = ref<AvatarOption[]>([]);
+const batchDownloaVisible = ref(false);
+
+watchEffect(() => {
+  batchDownloaVisible.value = Array.isArray(avatarList.value) && avatarList.value.length > 0;
+});
+
+const handleBatchDownload = async (count = 10) => {
+  const { default: hash } = await import("object-hash");
+  const avatarMap = [...Array(count)].reduce<Map<string, AvatarOption>>(res => {
+    let randomAvatarOption: AvatarOption;
+    let hashKey: string;
+
+    do {
+      randomAvatarOption = getRandomAvatarOption(avatarOpts.value);
+      hashKey = hash.sha1(randomAvatarOption);
+    } while (
+      randomAvatarOption.background.color === "transparent" ||
+      res.has(hashKey)
+    );
+
+    res.set(hashKey, randomAvatarOption);
+
+    return res;
+  }, new Map());
+  avatarList.value = Array.from(avatarMap.values()); // [...avatarMap.values()]
 };
 </script>
 

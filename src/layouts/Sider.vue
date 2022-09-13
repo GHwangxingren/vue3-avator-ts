@@ -2,7 +2,7 @@
  * @Author: wangxingren
  * @Date: 2022-04-06 17:11:16
  * @LastEditors: web.wangxingren
- * @LastEditTime: 2022-06-22 17:05:24
+ * @LastEditTime: 2022-09-05 23:20:59
  * @Descripttion:
  * @FilePath: /vue3-avator-ts/src/layouts/Sider.vue
 -->
@@ -27,7 +27,7 @@ const { isCollapsed, openSider, closeSider } = useSider();
   position: fixed;
   top: 0;
   right: 0;
-  z-index: 1000;
+  z-index: 200;
   height: 100%;
   width: var.$layout-sider-width;
   @media (prefers-reduced-motion: no-preference) {

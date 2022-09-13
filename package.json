@@ -10,11 +10,14 @@
     "auto:git": "node shell"
   },
   "dependencies": {
+    "clipboard": "^2.0.11",
     "html2canvas": "^1.4.1",
     "husky": "^7.0.4",
+    "jszip": "^3.10.1",
     "lint-staged": "^12.3.4",
     "mitt": "^3.0.0",
     "nprogress": "^0.2.0",
+    "object-hash": "^3.0.0",
     "perfect-scrollbar": "^1.5.5",
     "pinia": "^2.0.14",
     "pinia-plugin-persist": "^1.0.0",
@@ -35,6 +38,7 @@
   },
   "devDependencies": {
     "@types/node": "^17.0.23",
+    "@types/object-hash": "^2.2.1",
     "@typescript-eslint/eslint-plugin": "^5.10.2",
     "@typescript-eslint/eslint-plugin-tslint": "^5.12.1",
     "@typescript-eslint/parser": "^5.12.1",

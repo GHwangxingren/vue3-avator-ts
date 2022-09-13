@@ -3,13 +3,12 @@
  * @Author: 王兴仁
  * @Date: 2022-06-22 10:46:30
  * @LastEditors: web.wangxingren
- * @LastEditTime: 2022-08-30 16:12:21
+ * @LastEditTime: 2022-09-13 10:33:47
  * @FilePath: /vue3-avator-ts/src/components/Avatar/AvatarMain.vue
 -->
 <template>
   <div ref="avatarRef" class="avatar-main" :class="avatarOpts.wrapperShape" :style="{ width: `${avatarSize}px`, height: `${avatarSize}px` }">
     <Backgrpund :color="avatarOpts.background.color" />
-    {{ avatarOpts.wrapperShape }}
     <div class="avatar-content" v-html="svgContent"></div>
   </div>
 </template>

@@ -1,8 +1,8 @@
 <!--
  * @Author: wangxingren
  * @Date: 2022-04-06 17:10:27
- * @LastEditors: wangxingren
- * @LastEditTime: 2022-04-07 18:37:01
+ * @LastEditors: web.wangxingren
+ * @LastEditTime: 2022-09-13 16:36:40
  * @Descripttion: header头部部分
  * @FilePath: /vue3-avator-ts/src/layouts/Header.vue
 -->
@@ -11,7 +11,7 @@
     <!-- logo -->
     <img class="header-logo" :src="LogoSvg" alt="LOGO" :style="{ width: `${props.size}rem`, height: `${props.size}rem` }">
     <!-- title -->
-    <p class="header-title">Color Avator</p>
+    <p class="header-title">Copy Color Avator</p>
     <!-- link -->
     <div class="header-right">
       <a href="https://www.baidu.com" target="_black" rel="nofollow noopener noreferrer">

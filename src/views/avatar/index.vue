@@ -2,7 +2,7 @@
  * @Author: wangxingren
  * @Date: 2022-03-30 17:36:15
  * @LastEditors: web.wangxingren
- * @LastEditTime: 2022-08-30 17:34:00
+ * @LastEditTime: 2022-09-13 11:36:45
  * @Descripttion: 主页
  * @FilePath: /vue3-avator-ts/src/views/avatar/index.vue
 -->
@@ -30,6 +30,8 @@
             <!-- 操作栏2 -->
             <ActionOperate :avatar-ref="avatarRef?.avatarRef" />
           </div>
+          <Footer />
+          <CodeModal :visible="codeVisible" @close="codeVisible = false" />
         </div>
       </div>
     </Container>
@@ -42,11 +44,13 @@
 <script lang="ts" setup>
 import Header from "@/layouts/Header.vue";
 import Container from "@/layouts/Container.vue";
+import Footer from "@/components/Avatar/Footer.vue";
 import Sider from "@/layouts/Sider.vue";
 import AvatarMain, { type VueColorAvatarRef } from "@/components/Avatar/AvatarMain.vue";
 import ConfigPanel from "@/components/Avatar/ConfigPanel.vue";
 import ActionBar from "@/components/Avatar/ActionBar.vue";
 import ActionOperate from "@/components/Avatar/ActionOperate.vue";
+import CodeModal from "@/components/Avatar/CodeModal.vue";
 import { useAvatarOption } from "@/hooks";
 import { ActionType } from "@/enums";
 import { useAvatarStore } from "@/store";
@@ -57,8 +61,7 @@ const store = useAvatarStore();
 const { avatarOpts } = useAvatarOption();
 const flipped = ref<boolean>(false);
 const avatarRef = ref<VueColorAvatarRef>(); // 访问子组件暴露的属性
-const colorAvatarOpts = avatarRef.value?.avatarRef;
-
+const codeVisible = ref(false);
 const handleAction = (type: ActionType) => {
   switch(type) {
     case ActionType.Undo:
@@ -71,6 +74,7 @@ const handleAction = (type: ActionType) => {
       flipped.value = !flipped.value;
       break;
     case ActionType.Code:
+      codeVisible.value = !codeVisible.value;
       break;
     default:
   }
