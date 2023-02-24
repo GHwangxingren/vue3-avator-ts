@@ -1,8 +1,8 @@
 /*
  * @Author: wangxingren
  * @Date: 2022-03-30 16:35:06
- * @LastEditors: wangxingren
- * @LastEditTime: 2022-03-31 09:16:54
+ * @LastEditors: web.wangxingren
+ * @LastEditTime: 2023-02-24 11:39:11
  * @Descripttion: 路由入口
  * @FilePath: /vue3-avator-ts/src/router/index.ts
  */
@@ -13,7 +13,12 @@ import { App } from "vue";
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
-    redirect: "/avatar"
+    name: "Home",
+    meta: {
+      title: "Home"
+    },
+    component: () => import("@/views/index.vue")
+    // redirect: "/avatar"
   },
   {
     path: "/avatar",
@@ -22,6 +27,14 @@ const routes: Array<RouteRecordRaw> = [
       title: "Avatar"
     },
     component: () => import("@/views/avatar/index.vue")
+  },
+  {
+    path: "/carAnimation",
+    name: "CarAnimation",
+    meta: {
+      title: "购物车动画"
+    },
+    component: () => import("@/views/carAnimation/index.vue")
   }
 ];
 
